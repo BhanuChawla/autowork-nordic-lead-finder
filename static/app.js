@@ -88,10 +88,7 @@ let state = {
 };
 
 // ---- API CONFIG ----
-const API_KEY = 'AIzaSyAVgZAwrmpVixt5B9YjxmMYhJqdDnwqU1g';
-const GEOCODE_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
-const PLACES_URL = 'https://places.googleapis.com/v1/places:searchText';
-const FIELD_MASK = 'places.displayName,places.formattedAddress,places.nationalPhoneNumber,places.websiteUri,places.rating,places.userRatingCount,places.types,places.id,places.location,places.businessStatus';
+// API key removed — all Google API calls go through backend proxy
 
 // Search queries for different phases — Nordic tyre industry
 const SEARCH_QUERIES_PHASE1 = [
@@ -615,21 +612,14 @@ async function runSearchQueries(queries, coords, radius, locationName) {
 
 async function searchPlaces(textQuery, coords, radius) {
   try {
-    const resp = await fetch(PLACES_URL, {
+    const resp = await fetch(`${API_BASE}/api/places-search`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Goog-Api-Key': API_KEY,
-        'X-Goog-FieldMask': FIELD_MASK
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        textQuery: textQuery,
-        locationBias: {
-          circle: {
-            center: { latitude: coords.lat, longitude: coords.lng },
-            radius: radius
-          }
-        }
+        text_query: textQuery,
+        latitude: coords.lat,
+        longitude: coords.lng,
+        radius: radius
       })
     });
 

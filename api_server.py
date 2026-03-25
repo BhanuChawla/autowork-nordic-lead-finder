@@ -5,6 +5,54 @@ from datetime import datetime
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+
+# --- GOOGLE API PROXY (keeps API key server-side) ---
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
+
+class GeocodeRequest(BaseModel):
+    address: str
+
+class PlacesSearchRequest(BaseModel):
+    text_query: str
+    latitude: float
+    longitude: float
+    radius: float
+
+@app.post("/api/geocode")
+async def proxy_geocode(req: GeocodeRequest):
+    """Proxy geocoding requests to keep API key server-side."""
+    if not GOOGLE_API_KEY:
+        raise HTTPException(status_code=500, detail="Google API key not configured")
+    url = f"https://maps.googleapis.com/maps/api/geocode/json?address={req.address}&key={GOOGLE_API_KEY}"
+    async with httpx.AsyncClient(timeout=15.0) as client:
+        resp = await client.get(url)
+        return resp.json()
+
+@app.post("/api/places-search")
+async def proxy_places_search(req: PlacesSearchRequest):
+    """Proxy Google Places Text Search to keep API key server-side."""
+    if not GOOGLE_API_KEY:
+        raise HTTPException(status_code=500, detail="Google API key not configured")
+    url = "https://places.googleapis.com/v1/places:searchText"
+    headers = {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": GOOGLE_API_KEY,
+        "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.nationalPhoneNumber,places.websiteUri,places.rating,places.userRatingCount,places.types,places.id,places.location,places.businessStatus"
+    }
+    body = {
+        "textQuery": req.text_query,
+        "locationBias": {
+            "circle": {
+                "center": {"latitude": req.latitude, "longitude": req.longitude},
+                "radius": req.radius
+            }
+        }
+    }
+    async with httpx.AsyncClient(timeout=15.0) as client:
+        resp = await client.post(url, headers=headers, json=body)
+        return resp.json()
+
+
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Optional
