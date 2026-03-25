@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!--
+     ______                            __
+    / ____/___  ____ ___  ____  __  __/ /____  _____
+   / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+  / /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+  \____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                      /_/
+          Created with Perplexity Computer
+          https://www.perplexity.ai/computer
+  -->
+  <meta name="generator" content="Perplexity Computer">
+  <meta name="author" content="Perplexity Computer">
+  <meta property="og:see_also" content="https://www.perplexity.ai/computer">
+  <link rel="author" href="https://www.perplexity.ai/computer">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autowork eCommerce Lead Finder — Klipboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- Login Overlay -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-card">
+      <div class="login-brand">
+        <svg width="44" height="32" viewBox="0 0 33 24" fill="none" aria-label="Klipboard logo">
+          <path d="M17.348 22.807L9.57 14.983C7.942 13.345 7.942 10.69 9.57 9.052L17.348 1.228C18.976-.409 21.616-.409 23.244 1.228L31.022 9.052C32.65 10.69 32.65 13.345 31.022 14.983L23.244 22.807C21.616 24.444 18.976 24.444 17.348 22.807ZM21.269 20.848L29.074 12.996C29.611 12.456 29.611 11.579 29.074 11.039L21.269 3.188C20.731 2.647 19.86 2.647 19.323 3.188L11.518 11.039C10.981 11.579 10.981 12.456 11.518 12.996L19.323 20.848C19.86 21.388 20.731 21.388 21.269 20.848Z" fill="#ED017F"/>
+          <path d="M8.999 22.807L1.221 14.983C-.407 13.345-.407 10.69 1.221 9.052L8.999 1.228C10.627-.409 13.267-.409 14.894 1.228L22.673 9.052C24.3 10.69 24.3 13.345 22.673 14.983L14.894 22.807C13.267 24.444 10.627 24.444 8.999 22.807ZM12.933 20.847L20.738 12.996C21.275 12.456 21.275 11.579 20.738 11.039L12.933 3.188C12.396 2.647 11.525 2.647 10.987 3.188L3.182 11.039C2.645 11.579 2.645 12.456 3.182 12.996L10.987 20.847C11.525 21.388 12.396 21.388 12.933 20.847Z" fill="#ED017F"/>
+        </svg>
+        <div>
+          <div class="login-brand-name">Autowork eCommerce</div>
+          <div class="login-brand-sub">Lead Finder</div>
+          <div class="login-brand-parent">by klipboard.</div>
+        </div>
+      </div>
+      <h2 class="login-title">Sign in to continue</h2>
+      <p class="login-desc">Enter your Klipboard email to access the Lead Finder.</p>
+      <div class="login-form">
+        <input type="email" id="loginEmail" class="login-input" placeholder="you@klipboard.com" autocomplete="email" aria-label="Email address">
+        <button class="btn btn-primary login-btn" id="loginBtn">Sign In</button>
+        <p class="login-error" id="loginError" style="display:none;"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <svg width="32" height="24" viewBox="0 0 33 24" fill="none" aria-label="Klipboard logo">
+          <path d="M17.348 22.807L9.57 14.983C7.942 13.345 7.942 10.69 9.57 9.052L17.348 1.228C18.976-.409 21.616-.409 23.244 1.228L31.022 9.052C32.65 10.69 32.65 13.345 31.022 14.983L23.244 22.807C21.616 24.444 18.976 24.444 17.348 22.807ZM21.269 20.848L29.074 12.996C29.611 12.456 29.611 11.579 29.074 11.039L21.269 3.188C20.731 2.647 19.86 2.647 19.323 3.188L11.518 11.039C10.981 11.579 10.981 12.456 11.518 12.996L19.323 20.848C19.86 21.388 20.731 21.388 21.269 20.848Z" fill="var(--color-primary)"/>
+          <path d="M8.999 22.807L1.221 14.983C-.407 13.345-.407 10.69 1.221 9.052L8.999 1.228C10.627-.409 13.267-.409 14.894 1.228L22.673 9.052C24.3 10.69 24.3 13.345 22.673 14.983L14.894 22.807C13.267 24.444 10.627 24.444 8.999 22.807ZM12.933 20.847L20.738 12.996C21.275 12.456 21.275 11.579 20.738 11.039L12.933 3.188C12.396 2.647 11.525 2.647 10.987 3.188L3.182 11.039C2.645 11.579 2.645 12.456 3.182 12.996L10.987 20.847C11.525 21.388 12.396 21.388 12.933 20.847Z" fill="var(--color-primary)"/>
+        </svg>
+        <div class="sidebar-brand-text">
+          <span class="brand-name">Autowork eCommerce</span>
+          <span class="brand-sub">Lead Finder</span>
+          <span class="brand-parent">by klipboard.</span>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-item active" data-tab="finder" aria-current="page">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Lead Finder</span>
+        </button>
+        <button class="nav-item" data-tab="outreach">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span>Outreach</span>
+        </button>
+        <button class="nav-item" data-tab="list">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></svg>
+          <span>Outreach List</span>
+          <span class="nav-badge" id="listBadge" style="display:none;">0</span>
+        </button>
+        <button class="nav-item" data-tab="myleads">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>My Leads</span>
+          <span class="nav-badge" id="myLeadsBadge" style="display:none;">0</span>
+        </button>
+        <button class="nav-item" data-tab="insights">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h5l3-9 4 18 3-9h5"/></svg>
+          <span>Market Insights</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="pplx-footer-link">Created with Perplexity Computer</a>
+        <button class="theme-toggle-btn" data-theme-toggle aria-label="Toggle dark mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-sun"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <span>Dark Mode</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Mobile nav toggle -->
+    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <h1 class="page-title" id="pageTitle">Lead Finder</h1>
+        </div>
+        <div class="header-right">
+          <div class="user-indicator" id="userIndicator" style="display:none;">
+            <div class="user-avatar" id="userAvatar"></div>
+            <span class="user-name" id="userName"></span>
+            <button class="btn btn-ghost btn-sm" id="logoutBtn">Sign Out</button>
+          </div>
+          <a href="https://www.klipboard.com" target="_blank" rel="noopener noreferrer" class="header-link">klipboard.com</a>
+          <a href="https://www.klipboard.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Book a Demo</a>
+        </div>
+      </header>
+
+      <!-- Tab panels -->
+      <div class="tab-content">
+        <!-- TAB 1: Lead Finder -->
+        <section class="tab-panel active" id="panel-finder">
+          <div class="search-section">
+            <div class="search-row">
+              <div class="search-input-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input type="text" id="searchInput" class="search-input" placeholder="Enter Nordic location (city, town, or postcode)..." aria-label="Search location">
+              </div>
+              <button class="btn btn-primary" id="searchBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                Search
+              </button>
+            </div>
+            <div class="filter-row">
+              <div class="filter-group">
+                <label class="filter-label">Country</label>
+                <select id="countrySelect" class="filter-select">
+                  <option value="all">All Nordics</option>
+                  <option value="sweden">Sweden</option>
+                  <option value="norway">Norway</option>
+                  <option value="denmark">Denmark</option>
+                  <option value="finland">Finland</option>
+                  <option value="iceland">Iceland</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">Radius</label>
+                <select id="radiusSelect" class="filter-select">
+                  <option value="5000">5 km</option>
+                  <option value="10000">10 km</option>
+                  <option value="15000" selected>15 km</option>
+                  <option value="25000">25 km</option>
+                  <option value="50000">50 km</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">Score</label>
+                <select id="scoreFilter" class="filter-select">
+                  <option value="all">All Leads</option>
+                  <option value="hot">Hot Leads Only</option>
+                  <option value="warm">Warm &amp; Hot</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">Business Size</label>
+                <select id="sizeFilter" class="filter-select">
+                  <option value="small" selected>Small businesses (Recommended)</option>
+                  <option value="smallmed">Small &amp; Medium</option>
+                  <option value="all">All sizes</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats Bar -->
+          <div class="stats-bar" id="statsBar" style="display:none;">
+            <div class="stat-chip">
+              <span class="stat-value" id="totalLeads">0</span>
+              <span class="stat-label">Total Leads</span>
+            </div>
+            <div class="stat-chip stat-hot">
+              <span class="stat-value" id="hotCount">0</span>
+              <span class="stat-label">Hot</span>
+            </div>
+            <div class="stat-chip stat-warm">
+              <span class="stat-value" id="warmCount">0</span>
+              <span class="stat-label">Warm</span>
+            </div>
+            <div class="stat-chip stat-cool">
+              <span class="stat-value" id="coolCount">0</span>
+              <span class="stat-label">Cool</span>
+            </div>
+          </div>
+
+          <!-- Results area -->
+          <div id="resultsArea">
+            <!-- Empty state -->
+            <div class="empty-state" id="emptyState">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <h3>Find your next leads</h3>
+              <p>Enter a Nordic location to discover tyre shops, workshops, and distributors in the area.</p>
+            </div>
+            <!-- Skeleton loaders -->
+            <div class="skeleton-container" id="skeletonContainer" style="display:none;">
+              <div class="skeleton-card"><div class="sk-line sk-title"></div><div class="sk-line sk-text"></div><div class="sk-line sk-text short"></div><div class="sk-row"><div class="sk-badge"></div><div class="sk-badge"></div></div></div>
+              <div class="skeleton-card"><div class="sk-line sk-title"></div><div class="sk-line sk-text"></div><div class="sk-line sk-text short"></div><div class="sk-row"><div class="sk-badge"></div><div class="sk-badge"></div></div></div>
+              <div class="skeleton-card"><div class="sk-line sk-title"></div><div class="sk-line sk-text"></div><div class="sk-line sk-text short"></div><div class="sk-row"><div class="sk-badge"></div><div class="sk-badge"></div></div></div>
+              <div class="skeleton-card"><div class="sk-line sk-title"></div><div class="sk-line sk-text"></div><div class="sk-line sk-text short"></div><div class="sk-row"><div class="sk-badge"></div><div class="sk-badge"></div></div></div>
+            </div>
+            <!-- Results grid -->
+            <div class="results-grid" id="resultsGrid"></div>
+            <!-- Load more -->
+            <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+              <button class="btn btn-secondary" id="loadMoreBtn">Load More Leads</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 2: Outreach Generator -->
+        <section class="tab-panel" id="panel-outreach">
+          <div class="outreach-header">
+            <p class="outreach-desc">Select a lead and generate personalised outreach scripts powered by Autowork eCommerce product intelligence.</p>
+          </div>
+          <div class="outreach-config">
+            <div class="config-row">
+              <div class="filter-group">
+                <label class="filter-label">Selected Lead</label>
+                <select id="outreachLeadSelect" class="filter-select">
+                  <option value="">Choose a lead from your outreach list...</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">Persona</label>
+                <select id="personaSelect" class="filter-select">
+                  <option value="owner">Business Owner / Shop Manager</option>
+                  <option value="workshopManager">Workshop Manager</option>
+                  <option value="wholesaler">Wholesaler / Distribution Manager</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">Industry</label>
+                <select id="industrySelect" class="filter-select">
+                  <option value="tyreRetail">Tyre Retail</option>
+                  <option value="autoWorkshop">Auto Workshop</option>
+                  <option value="tyreWholesale">Tyre Wholesale</option>
+                  <option value="tyreHotel">Tyre Hotel / Storage</option>
+                </select>
+              </div>
+            </div>
+            <div class="config-row">
+              <div class="channel-toggle">
+                <button class="channel-btn active" data-channel="email">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  Cold Email Sequence
+                </button>
+                <button class="channel-btn" data-channel="call">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  Cold Call Script
+                </button>
+                <button class="channel-btn" data-channel="linkedin">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  LinkedIn Message
+                </button>
+              </div>
+              <button class="btn btn-primary" id="generateBtn">Generate Script</button>
+            </div>
+          </div>
+          <!-- Outreach output -->
+          <div class="outreach-output" id="outreachOutput">
+            <div class="empty-state">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <h3>Generate outreach scripts</h3>
+              <p>Select a lead, choose a persona and channel, then hit Generate.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 3: Outreach List -->
+        <section class="tab-panel" id="panel-list">
+          <div class="list-header">
+            <p class="list-desc">Leads you've saved for outreach. Export to CSV or generate scripts.</p>
+            <button class="btn btn-secondary" id="exportCsvBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export CSV
+            </button>
+          </div>
+          <div id="outreachListArea">
+            <div class="empty-state" id="listEmptyState">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" stroke-width="1.5"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></svg>
+              <h3>Your outreach list is empty</h3>
+              <p>Add leads from the Lead Finder to build your outreach list.</p>
+            </div>
+            <div class="list-table-wrap" id="listTableWrap" style="display:none;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Business</th>
+                    <th>Location</th>
+                    <th>Phone</th>
+                    <th>Score</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="listTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 4: My Leads -->
+        <section class="tab-panel" id="panel-myleads">
+          <div class="list-header">
+            <div>
+              <h2 style="font-size:var(--text-lg);font-weight:600;margin-bottom:var(--space-1);">My Claimed Leads</h2>
+              <p class="list-desc">Leads you've claimed for outreach. Remember to create each lead in HubSpot.</p>
+            </div>
+          </div>
+          <div id="myLeadsArea">
+            <div class="empty-state" id="myLeadsEmpty">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-faint)" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <h3>No claimed leads yet</h3>
+              <p>Search for leads and claim them to start building your pipeline.</p>
+            </div>
+            <div class="list-table-wrap" id="myLeadsTableWrap" style="display:none;">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Business</th>
+                    <th>Location</th>
+                    <th>Phone</th>
+                    <th>Score</th>
+                    <th>HubSpot</th>
+                    <th>Claimed</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="myLeadsTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 5: Market Insights -->
+        <section class="tab-panel" id="panel-insights">
+          <div class="insights-grid">
+            <!-- Key Stat -->
+            <div class="insight-card insight-hero">
+              <div class="insight-stat-row">
+                <div class="insight-stat">
+                  <span class="insight-stat-value">55%</span>
+                  <span class="insight-stat-label">Research Tyres Online</span>
+                </div>
+                <div class="insight-stat">
+                  <span class="insight-stat-value">15%</span>
+                  <span class="insight-stat-label">Buy Tyres Online</span>
+                </div>
+                <div class="insight-stat">
+                  <span class="insight-stat-value">6%</span>
+                  <span class="insight-stat-label">Annual E-Commerce Growth</span>
+                </div>
+              </div>
+              <p class="insight-source">Online tyre sales are the fastest-growing channel in the tyre industry — Goodyear / Continental research</p>
+            </div>
+
+            <!-- ICP -->
+            <div class="insight-card">
+              <h3 class="insight-title">Target Customer Profile</h3>
+              <p class="insight-subtitle">Independent Tyre Shops &amp; Workshops Without E-Commerce</p>
+              <p class="insight-text">Independent tyre shops, auto workshops, and small-to-medium tyre retailers in the Nordics that currently sell tyres offline or have a basic web presence without e-commerce capability. Prime prospects are those offering tyre hotel (seasonal storage) services.</p>
+              <div class="insight-tags">
+                <span class="insight-tag">Tyre Retail</span>
+                <span class="insight-tag">Auto Workshop</span>
+                <span class="insight-tag">Tyre Wholesale</span>
+                <span class="insight-tag">Tyre Hotel / Storage</span>
+                <span class="insight-tag">Fast-Fit Centre</span>
+              </div>
+            </div>
+
+            <!-- Pain Points -->
+            <div class="insight-card">
+              <h3 class="insight-title">Key Pain Points to Listen For</h3>
+              <ul class="insight-list">
+                <li><strong>Missing online sales</strong> — Losing customers to online retailers like Däckonline, Amazon, and chain competitors</li>
+                <li><strong>Seasonal revenue management</strong> — Revenue dips between winter/summer tyre change seasons with no recurring online income</li>
+                <li><strong>Manual tyre hotel tracking</strong> — Managing seasonal storage inventory with spreadsheets or paper</li>
+                <li><strong>No booking system</strong> — Fitting appointments managed by phone only, missing walk-in and online bookings</li>
+                <li><strong>No online price visibility</strong> — Customers asking for quotes when competitors show prices online instantly</li>
+                <li><strong>EV tyre demand</strong> — Growing demand for specialised EV tyres (heavier, lower rolling resistance) they can't easily advertise</li>
+              </ul>
+            </div>
+
+            <!-- Buying Triggers -->
+            <div class="insight-card">
+              <h3 class="insight-title">Buying Triggers to Watch For</h3>
+              <ul class="insight-list">
+                <li>Losing customers to online-only retailers and chains with e-commerce</li>
+                <li>Growing tyre hotel business that needs digital management</li>
+                <li>Seasonal capacity management challenges (booking peaks)</li>
+                <li>Desire to reach younger, digitally-native car owners</li>
+                <li>Expanding to multiple locations or workshop bays</li>
+                <li>Competitor nearby has launched online ordering</li>
+              </ul>
+            </div>
+
+            <!-- Key Features -->
+            <div class="insight-card">
+              <h3 class="insight-title">Autowork eCommerce Key Features</h3>
+              <div class="feature-grid">
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Tyre search by vehicle or size</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Price comparison across brands</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Online booking for fitting</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Tyre hotel / storage management</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Workshop integration</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Mobile-optimised shopping</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Delivery to home or fitting centre</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Customer reviews &amp; ratings</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>EV &amp; specialty tyre support</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Klarna, Vipps, MobilePay</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Tyre manufacturer catalogues</span>
+                </div>
+                <div class="feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Branded storefront, no dev needed</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Integrations -->
+            <div class="insight-card">
+              <h3 class="insight-title">Payment &amp; Platform Integrations</h3>
+              <p class="insight-text">Autowork eCommerce integrates with the most popular Nordic payment methods. When a prospect already accepts these, it's a buying signal — seamless integration.</p>
+              <div class="integration-logos">
+                <span class="integration-chip">Klarna</span>
+                <span class="integration-chip">Vipps</span>
+                <span class="integration-chip">MobilePay</span>
+                <span class="integration-chip">Swish</span>
+                <span class="integration-chip">Workshop Systems</span>
+              </div>
+            </div>
+
+            <!-- Competitor Quick Ref -->
+            <div class="insight-card">
+              <h3 class="insight-title">Competitor Quick Reference</h3>
+              <p class="insight-text">If a prospect mentions any of these, here's how to position Autowork eCommerce:</p>
+              <div class="competitor-list">
+                <div class="competitor-item">
+                  <strong>Däckonline (Delticom AG)</strong>
+                  <p>"Däckonline is a faceless German marketplace. Your customers want local service, expert advice, and fitting they can trust. Autowork eCommerce gives you the online reach with the local touch."</p>
+                </div>
+                <div class="competitor-item">
+                  <strong>Däckia (Continental)</strong>
+                  <p>"Däckia is a chain. Your independence is your strength — personalised service, local expertise, flexible pricing. Autowork eCommerce gives you the same online capability without losing what makes you special."</p>
+                </div>
+                <div class="competitor-item">
+                  <strong>DekkTeam / Vianor</strong>
+                  <p>"DekkTeam's franchise model locks you into their brand. Vianor only sells Nokian — your customers want choice. Autowork eCommerce keeps your brand front and centre and lets you offer every brand."</p>
+                </div>
+                <div class="competitor-item">
+                  <strong>No Online Presence</strong>
+                  <p>"You've done brilliantly to build a loyal customer base offline. But 55% of tyre buyers now research online first. Autowork eCommerce lets you capture that demand without changing how your workshop operates."</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nordic Market Context -->
+            <div class="insight-card">
+              <h3 class="insight-title">Nordic Market Context</h3>
+              <ul class="insight-list">
+                <li><strong>Mandatory winter tyres</strong> — All Nordic countries require winter tyres, creating two annual peak seasons for tyre changes</li>
+                <li><strong>Tyre hotel culture</strong> — Seasonal storage is extremely popular — many urban dwellers lack garage space. Key recurring revenue driver</li>
+                <li><strong>EV growth</strong> — Nordics have the highest EV adoption in Europe. EVs need specialised tyres — a growth segment</li>
+                <li><strong>Digital-first consumers</strong> — Nordic consumers are among the most digitally savvy in Europe with high e-commerce adoption</li>
+                <li><strong>Market size</strong> — 10,000+ tyre-related businesses across the Nordics</li>
+              </ul>
+            </div>
+
+            <!-- Messaging Pillars -->
+            <div class="insight-card">
+              <h3 class="insight-title">Messaging Pillars</h3>
+              <div class="pillar-list">
+                <div class="pillar-item">
+                  <h4>Capture Online Demand</h4>
+                  <p>15% of tyre buyers already purchase online. That number grows every year. Don't send them to Däckonline or Amazon.</p>
+                </div>
+                <div class="pillar-item">
+                  <h4>Tyre Hotel Made Digital</h4>
+                  <p>Automate seasonal storage reminders, booking, and tracking. Turn your tyre hotel into a loyalty engine.</p>
+                </div>
+                <div class="pillar-item">
+                  <h4>Nordic-First Design</h4>
+                  <p>Built for the Nordic market — winter/summer tyre seasons, local payment methods (Klarna, Vipps, MobilePay), and local language support.</p>
+                </div>
+                <div class="pillar-item">
+                  <h4>No Development Required</h4>
+                  <p>Your branded tyre shop, live in days. No web agency, no IT team needed.</p>
+                </div>
+                <div class="pillar-item">
+                  <h4>Workshop Integration</h4>
+                  <p>Online bookings flow directly into your workshop schedule. No double-entry, no missed appointments.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
