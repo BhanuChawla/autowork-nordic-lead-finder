@@ -582,14 +582,23 @@ async function loadMore() {
 async function geocodeLocation(location, country) {
   const suffix = COUNTRY_BIAS[country] || '';
   const regionParam = COUNTRY_REGION_BIAS[country] || '';
-  const url = `${GEOCODE_URL}?address=${encodeURIComponent(location + suffix)}&key=${API_KEY}${regionParam}`;
-  const resp = await fetch(url);
-  const data = await resp.json();
-  if (data.results && data.results.length > 0) {
-    const loc = data.results[0].geometry.location;
-    return { lat: loc.lat, lng: loc.lng };
+  const fullAddress = encodeURIComponent(location + suffix) + regionParam;
+  try {
+    const resp = await fetch(`${API_BASE}/api/geocode`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address: fullAddress })
+    });
+    const data = await resp.json();
+    if (data.results && data.results.length > 0) {
+      const loc = data.results[0].geometry.location;
+      return { lat: loc.lat, lng: loc.lng };
+    }
+    return null;
+  } catch (err) {
+    console.warn('Geocode failed:', err);
+    return null;
   }
-  return null;
 }
 
 async function runSearchQueries(queries, coords, radius, locationName) {
